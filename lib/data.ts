@@ -13,7 +13,8 @@ export const projects: Project[] = [
   {
     id: "1",
     name: "promptman",
-    description: "Management for prompt based on electron-nextjs-seekdb-template.",
+    description:
+      "Management for prompt based on electron-nextjs-seekdb-template.",
     tags: ["TypeScript", "Electron", "SeekDB"],
     status: "Classified",
     url: "https://github.com/ofx-labs/promptman",
@@ -33,7 +34,8 @@ export const projects: Project[] = [
   {
     id: "3",
     name: "langchain-vector-store",
-    description: "Experimental vector store implementation for LangChain ecosystem.",
+    description:
+      "Experimental vector store implementation for LangChain ecosystem.",
     tags: ["AI", "Vector Store", "LangChain"],
     status: "Classified",
     url: "https://github.com/ofx-labs/langchain-vector-store",
@@ -96,7 +98,8 @@ export const blogs: Blog[] = [
   {
     id: "1",
     title: "The Future of Local-First Development",
-    description: "Why we believe the next wave of web applications will run entirely on your device, powered by databases like SeekDB.",
+    description:
+      "Why we believe the next wave of web applications will run entirely on your device, powered by databases like SeekDB.",
     date: "2024-03-15",
     readTime: "5 min read",
     tags: ["Local First", "Architecture"],
@@ -105,16 +108,18 @@ export const blogs: Blog[] = [
   {
     id: "2",
     title: "Introducing SeekDB: A New Era",
-    description: "A lightweight, embeddable vector database designed specifically for the modern web stack and local AI applications.",
+    description:
+      "A lightweight, embeddable vector database designed specifically for the modern web stack and local AI applications.",
     date: "2024-03-01",
     readTime: "8 min read",
     tags: ["SeekDB", "Database", "Vector"],
     slug: "introducing-seekdb",
   },
-   {
+  {
     id: "3",
     title: "Engineering Principles at OFX Labs",
-    description: "How we approach building experimental software in a rapidly changing landscape.",
+    description:
+      "How we approach building experimental software in a rapidly changing landscape.",
     date: "2024-02-20",
     readTime: "6 min read",
     tags: ["Engineering", "Culture"],
@@ -141,15 +146,15 @@ export const roadmaps: RoadmapItem[] = [
     projectName: "promptman",
     version: "v1.1.0",
     title: "Advanced Template Support",
-    description: "Introducing dynamic variables and nested templates for complex prompt engineering workflows.",
+    description:
+      "Introducing dynamic variables and nested templates for complex prompt engineering workflows.",
     features: [
       "Dynamic variable interpolation",
       "Nested template support",
-      "Export to JSON/YAML",
-      "Dark mode improvements"
+      "Dark mode improvements",
     ],
     status: "In Progress",
-    eta: "Q2 2024"
+    eta: "Q2 2026",
   },
   {
     id: "2",
@@ -157,15 +162,11 @@ export const roadmaps: RoadmapItem[] = [
     projectName: "seekdb-client",
     version: "v0.5.0",
     title: "Performance Optimization",
-    description: "Major performance improvements for vector search and indexing.",
-    features: [
-        "WASM core rewrite",
-        "Parallel indexing",
-        "Memory usage reduction (approx. 40%)",
-        "Browser compatibility fixes"
-    ],
+    description:
+      "Major performance improvements for vector search and indexing.",
+    features: ["Browser compatibility fixes"],
     status: "Planned",
-    eta: "Q3 2024"
+    eta: "Q3 2026",
   },
   {
     id: "3",
@@ -173,14 +174,10 @@ export const roadmaps: RoadmapItem[] = [
     projectName: "mine-kb",
     version: "v2.0.0",
     title: "Mobile Sync & Cloud Backup",
-    description: "Seamless synchronization between desktop and mobile devices with optional encrypted cloud backup.",
-    features: [
-        "iOS & Android companion apps",
-        "End-to-end encrypted sync",
-        "WebDAV support",
-        "Conflict resolution UI"
-    ],
+    description:
+      "Seamless synchronization between desktop and mobile devices with optional encrypted cloud backup.",
+    features: ["Conflict resolution UI"],
     status: "Review",
-    eta: "Q2 2024"
-  }
+    eta: "Q2 2026",
+  },
 ];
