@@ -9,7 +9,7 @@ export function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="relative flex h-10 w-10 overflow-hidden items-center justify-center border-[2px] border-black bg-primary transition-transform group-hover:rotate-12">
+          <div className="relative flex h-10 w-10 overflow-hidden items-center justify-center border-2 border-black bg-primary transition-transform group-hover:rotate-12">
             <Image
               src="/logo.png"
               alt="OFX Labs Logo"
@@ -36,7 +36,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="default" size="sm" className="gap-2">
+            <Button variant="outline" size="sm" className="gap-2">
               <Github className="h-4 w-4" />
               <span>GitHub</span>
             </Button>
