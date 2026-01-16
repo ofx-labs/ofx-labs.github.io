@@ -1,18 +1,21 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Clock, BookOpen, Calendar } from "lucide-react";
-import { blogs } from "@/lib/data";
+import { getBlogBySlug, getAllBlogs } from "@/lib/mdx-blogs";
+import FutureLocalFirst from "@/content/blogs/future-local-first.mdx";
+import IntroducingSeekDB from "@/content/blogs/introducing-seekdb.mdx";
+import EngineeringPrinciples from "@/content/blogs/engineering-principles.mdx";
 import { Button } from "@/app/components/ui/Button";
-import { Card } from "@/app/components/ui/Card";
 
 interface BlogDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 // 生成静态参数（可选，用于静态生成）
 export async function generateStaticParams() {
+  const blogs = getAllBlogs();
   return blogs.map((blog) => ({
     slug: blog.slug,
   }));
@@ -20,8 +23,9 @@ export async function generateStaticParams() {
 
 // 生成元数据
 export async function generateMetadata({ params }: BlogDetailPageProps) {
-  const blog = blogs.find((b) => b.slug === params.slug);
-  
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug);
+
   if (!blog) {
     return {
       title: "Blog Not Found",
@@ -34,26 +38,13 @@ export async function generateMetadata({ params }: BlogDetailPageProps) {
   };
 }
 
-export default function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const blog = blogs.find((b) => b.slug === params.slug);
+export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug);
 
   if (!blog) {
     notFound();
   }
-
-  // 示例博客内容（实际应用中应该从CMS或数据库获取）
-  const content = `
-    <h2>Introduction</h2>
-    <p>This is where the blog content would go. In a real application, this would be fetched from a CMS or database.</p>
-    
-    <h2>Main Content</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-    
-    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    
-    <h2>Conclusion</h2>
-    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-  `;
 
   return (
     <div className="relative">
@@ -121,16 +112,19 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
       <section className="bg-gray-50 py-20">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
-            <Card>
-              <article
-                className="blog-content space-y-6 text-lg leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: content }}
-                style={{
-                  fontSize: "1.125rem",
-                  lineHeight: "1.75rem",
-                }}
-              />
-            </Card>
+            <div className="border-[3px] border-black bg-white p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <article className="blog-content space-y-6 text-lg leading-relaxed">
+                {slug === "future-local-first" ? (
+                  <FutureLocalFirst />
+                ) : slug === "introducing-seekdb" ? (
+                  <IntroducingSeekDB />
+                ) : slug === "engineering-principles" ? (
+                  <EngineeringPrinciples />
+                ) : (
+                  <p>No content found for slug: {slug}</p>
+                )}
+              </article>
+            </div>
           </div>
         </div>
       </section>

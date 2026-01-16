@@ -1,0 +1,77 @@
+export const metadata = {
+  title: "Introducing SeekDB: A New Era",
+  description: "A lightweight, embeddable vector database designed specifically for the modern web stack and local AI applications.",
+  date: "2024-03-01",
+  readTime: "8 min read",
+  tags: ["SeekDB", "Database", "Vector"],
+  slug: "introducing-seekdb",
+};
+
+## What is SeekDB?
+
+SeekDB is a revolutionary vector database that brings powerful search capabilities directly to your browser and local applications. Unlike traditional databases that require server infrastructure, SeekDB runs entirely on the client side.
+
+## Key Features
+
+### 1. Embeddable Architecture
+
+SeekDB can be embedded directly into your application, eliminating the need for external database servers. This makes it perfect for:
+
+- Browser-based applications
+- Electron apps
+- Local-first applications
+- Edge computing scenarios
+
+### 2. Vector Search
+
+Built-in support for vector similarity search enables powerful AI features:
+
+- Semantic search
+- Recommendation systems
+- Content matching
+- Similarity detection
+
+### 3. Lightweight Design
+
+With a minimal footprint, SeekDB doesn't bloat your application:
+
+- Small bundle size
+- Fast initialization
+- Low memory usage
+- Efficient indexing
+
+## Use Cases
+
+SeekDB is ideal for:
+
+- **Local AI applications**: Run AI models with local vector storage
+- **Knowledge bases**: Build personal or team knowledge management systems
+- **Search engines**: Create powerful search without server infrastructure
+- **Recommendation systems**: Build recommendation engines that run client-side
+
+## Getting Started
+
+Getting started with SeekDB is straightforward:
+
+```typescript
+import { SeekDB } from 'seekdb-client';
+
+const db = new SeekDB();
+await db.initialize();
+
+// Add vectors
+await db.add({
+  id: 'doc1',
+  vector: [0.1, 0.2, 0.3],
+  metadata: { title: 'My Document' }
+});
+
+// Search
+const results = await db.search([0.1, 0.2, 0.3], { limit: 10 });
+```
+
+## The Future
+
+SeekDB represents a new era of database technology—one where powerful features are available locally, without compromising on performance or capabilities.
+
+As web applications become more sophisticated and AI becomes more prevalent, tools like SeekDB will be essential for building the next generation of applications.
